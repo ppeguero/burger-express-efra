@@ -5,7 +5,14 @@ interface ContactFormData {
   message: string;
 }
 
-export async function sendContactForm(data: ContactFormData): Promise<any> {
+interface ContactResponse {
+  name: string;
+  email: string;
+  phone_number?: string;
+  message: string;
+}
+
+export async function sendContactForm(data: ContactFormData): Promise<ContactResponse> {
   const response = await fetch("http://localhost:8080/api/contact", {
     method: "POST",
     headers: {
